@@ -16,8 +16,11 @@ import java.time.LocalDateTime;
 public class Bar {
 
     @Id
-    @Column(name = "slug", length = 255, nullable = false)
+    @Column(name = "slug")
     private String slug;
+
+    @Column(name = "description", columnDefinition = "TEXT")
+    private String description;
 
     @Column(name = "city_id", nullable = false)
     private Long cityId;
@@ -27,10 +30,6 @@ public class Bar {
 
     @Column(name = "address", nullable = false, length = 500)
     private String address;
-
-    @Lob
-    @Column(name = "description")
-    private String description;
 
     @Column(name = "phone", length = 50)
     private String phone;
@@ -45,7 +44,7 @@ public class Bar {
     private String websiteUrl;
 
     @Column(name = "price_level")
-    private Integer priceLevel; // TINYINT -> Integer is OK
+    private Byte priceLevel;
 
     @Column(name = "rating", precision = 4, scale = 2)
     private BigDecimal rating;

@@ -46,10 +46,11 @@ public class BarService {
                         b.getName(),
                         b.getAddress(),
                         b.getPriceLevel(),
-                        b.getRating(),
-                        b.getLatitude(),
-                        b.getLongitude()
+                        b.getRating() != null ? b.getRating().doubleValue() : null,
+                        b.getLatitude() != null ? b.getLatitude().doubleValue() : null,
+                        b.getLongitude() != null ? b.getLongitude().doubleValue() : null
                 ));
+
     }
 
     public BarDetailsDto getBarBySlug(String slug) {
@@ -67,10 +68,13 @@ public class BarService {
                 b.getSiteUrl(),
                 b.getWebsiteUrl(),
                 b.getPriceLevel(),
-                b.getRating(),
-                b.getLatitude(),
-                b.getLongitude(),
+
+                b.getRating() != null ? b.getRating().doubleValue() : null,
+                b.getLatitude() != null ? b.getLatitude().doubleValue() : null,
+                b.getLongitude() != null ? b.getLongitude().doubleValue() : null,
+
                 b.getIsActive()
         );
+
     }
 }
