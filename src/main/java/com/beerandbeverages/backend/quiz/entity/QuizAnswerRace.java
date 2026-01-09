@@ -3,29 +3,25 @@ package com.beerandbeverages.backend.quiz.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 
 @Entity
 @Table(name = "quiz_answer_races")
+@IdClass(QuizAnswerRaceId.class)
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class QuizAnswerRace {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @ManyToOne
-    @JoinColumn(name = "answer_id")
+    @JoinColumn(name = "answer_id", nullable = false)
     private QuizAnswer answer;
 
+    @Id
     @ManyToOne
-    @JoinColumn(name = "race_id")
+    @JoinColumn(name = "race_id", nullable = false)
     private Race race;
 
+    @Column(nullable = false)
     private Integer score;
 }
 

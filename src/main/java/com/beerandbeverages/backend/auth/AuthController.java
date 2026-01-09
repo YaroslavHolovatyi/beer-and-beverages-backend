@@ -45,7 +45,7 @@ public class AuthController {
         user.setEmail(request.getEmail().toLowerCase());
         user.setFirstName(request.getFirstName());
         user.setLastName(request.getLastName());
-        user.setRole(UserRole.USER);
+        user.setRole(UserRole.user);
         user.setIsActive(true);
         user.setMainCity(city);
         user.setPasswordHash(

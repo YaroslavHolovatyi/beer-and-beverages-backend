@@ -13,7 +13,7 @@ public class Race {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     private String slug;
     private String name;

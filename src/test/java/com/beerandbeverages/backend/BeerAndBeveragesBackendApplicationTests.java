@@ -9,5 +9,4 @@ class BeerAndBeveragesBackendApplicationTests {
     @Test
     void contextLoads() {
     }
-
 }

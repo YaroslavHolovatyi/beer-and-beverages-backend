@@ -23,32 +23,28 @@ public class QuizResultService {
 
     public QuizResultResponse calculateResult(QuizSubmitRequest request) {
 
-        Map<Long, Integer> raceScores = new HashMap<>();
+        Map<Integer, Integer> raceScores = new HashMap<>();
 
-        for (Long answerId : request.answers().values()) {
+        for (Integer answerId : request.answers().values()) {
             List<QuizAnswerRace> mappings =
-                    answerRaceRepository.findByAnswerId(answerId);
+                    answerRaceRepository.findByAnswer_Id(answerId);
 
             for (QuizAnswerRace ar : mappings) {
                 raceScores.merge(
-                        ar.getRace().getId(),
+                        ar.getRace().getId(),   // тепер Integer
                         ar.getScore(),
                         Integer::sum
                 );
             }
         }
 
-        Long winningRaceId = raceScores.entrySet().stream()
+        Integer winningRaceId = raceScores.entrySet().stream()
                 .max(Map.Entry.comparingByValue())
-                .orElseThrow(() ->
-                        new IllegalStateException("No race calculated")
-                )
+                .orElseThrow(() -> new IllegalStateException("No race calculated"))
                 .getKey();
 
         Race race = raceRepository.findById(winningRaceId)
-                .orElseThrow(() ->
-                        new EntityNotFoundException("Race not found: " + winningRaceId)
-                );
+                .orElseThrow(() -> new EntityNotFoundException("Race not found: " + winningRaceId));
 
         return new QuizResultResponse(
                 race.getId(),

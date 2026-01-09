@@ -6,10 +6,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public record QuizResultResponse(
-        Long raceId,
+        Integer raceId,
         String slug,
         String title,
         String description,
-        Map<Long, Integer> scoreTable
+        Map<Integer, Integer> scoreTable
 ) {}
 
